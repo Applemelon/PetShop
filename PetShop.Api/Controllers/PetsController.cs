@@ -38,8 +38,8 @@ namespace PetShop.Api.Controllers
         [HttpPost]
         public ActionResult<Pet> Post([FromBody] Pet value)
         {
-            Pet pet = new Pet();
-            if (string.IsNullOrEmpty(pet.name))
+            Pet pet = value;
+            /*if (string.IsNullOrEmpty(pet.name))
             {
                 return BadRequest("Name is required for creating Pet");
             }
@@ -47,7 +47,7 @@ namespace PetShop.Api.Controllers
             if (string.IsNullOrEmpty(pet.previousowner))
             {
                 return BadRequest("Previous owner is required for creating Pet");
-            }
+            }*/
             return _petService.Create(pet);
         }
 
