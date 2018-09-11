@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="UIService\Dm,urki.cs" />
+    <Compile Remove="UIService\Implementation\CustomerService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerApp.Core.Entity\PetShop.Core.Entity.csproj" />
+  </ItemGroup>
+</Project>
