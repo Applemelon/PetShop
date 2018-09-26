@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using PetShop.Core.Entity;
 using PetShop.Core.RepositoryService;
@@ -17,29 +18,30 @@ namespace PetShop.Core.UIService
 
         public Color Create(Color color)
         {
-            throw new NotImplementedException();
+            return colorRepo.Create(color);
         }
 
         public Color Delete(int id)
         {
-            throw new NotImplementedException();
+            return colorRepo.Delete(id);
         }
 
         public Color Get(int id)
         {
-            throw new NotImplementedException();
+            return colorRepo.Get(id);
         }
 
         public List<Color> GetAll()
         {
-            throw new NotImplementedException();
+            return colorRepo.GetAll().ToList();
         }
 
-        public Color New(string name)
+        public Color New(string name, string hexcode)
         {
             Color color = new Color()
             {
-                name = name
+                name = name,
+                hexcode = hexcode
             };
 
             return color;
@@ -47,7 +49,7 @@ namespace PetShop.Core.UIService
 
         public Color Update(Color colorUpdate)
         {
-            throw new NotImplementedException();
+            return colorRepo.Update(colorUpdate);
         }
     }
 }

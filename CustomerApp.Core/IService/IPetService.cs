@@ -6,7 +6,7 @@ namespace PetShop.Core.UIService
 {
     public interface IPetService
     {
-        Pet New(string name, PetType type, DateTime birthday, string color, double price);
+        Pet New(string name, PetType type, DateTime birthday, double price);
 
         Pet Create(Pet pet);
 

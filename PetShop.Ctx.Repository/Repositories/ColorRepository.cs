@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PetShop.Ctx.Repository.Repositories
 {
-    class ColorRepository : IColorRepository
+    public class ColorRepository : IColorRepository
     {
         private PetShopContext _ctx;
 
@@ -25,7 +25,9 @@ namespace PetShop.Ctx.Repository.Repositories
 
         public Color Delete(int id)
         {
-            throw new NotImplementedException();
+            var color = _ctx.Remove(new Color { id = id }).Entity;
+            _ctx.SaveChanges();
+            return color;
         }
 
         public Color Get(int id)

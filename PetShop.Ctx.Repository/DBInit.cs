@@ -20,6 +20,24 @@ namespace PetShop.Ctx.Repository
                 name = "Frederik Hansen"
             };
 
+            Color yellow = new Color
+            {
+                name = "Yellow",
+                hexcode = "#FFFF00"
+            };
+
+            Color brown = new Color
+            {
+                name = "Brown",
+                hexcode = "#D2691E"
+            };
+
+            Color black = new Color
+            {
+                name = "Black",
+                hexcode = "#000000"
+            };
+
             Pet hans = new Pet
             {
                 owner = per,
@@ -27,7 +45,6 @@ namespace PetShop.Ctx.Repository
                 type = PetType.BIRD,
                 birthday = DateTime.Now,
                 solddate = DateTime.Now,
-                color = "Rød, Grøn",
                 price = 59.99
             };
 
@@ -38,7 +55,6 @@ namespace PetShop.Ctx.Repository
                 type = PetType.HAMSTER,
                 birthday = DateTime.Now,
                 solddate = DateTime.Now,
-                color = "Hvid",
                 price = 500
             };
 
@@ -49,7 +65,6 @@ namespace PetShop.Ctx.Repository
                 type = PetType.BIRD,
                 birthday = DateTime.Now,
                 solddate = DateTime.Now,
-                color = "Hvid",
                 price = 800000
             };
 
@@ -58,6 +73,9 @@ namespace PetShop.Ctx.Repository
             ctx.Add(viggo);
             ctx.Add(per);
             ctx.Add(frederik);
+            ctx.Add(yellow);
+            ctx.Add(brown);
+            ctx.Add(black);
 
             ctx.SaveChanges();
 

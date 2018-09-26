@@ -58,7 +58,7 @@ namespace PetShop.Api
             services.AddScoped<IOwnerRepository, OwnerRepository>();
 
             services.AddScoped<IColorService, ColorService>();
-            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IColorRepository, ColorRepository>();
 
             services.AddMvc().AddJsonOptions(options =>
             {

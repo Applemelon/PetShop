@@ -28,7 +28,7 @@ namespace PetShop.Api.Controllers
         }
 
         // GET: api/Owners/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public ActionResult<Owner> Get(int id)
         {
             return _ownerService.Get(id);

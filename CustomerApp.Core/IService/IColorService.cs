@@ -7,7 +7,7 @@ namespace PetShop.Core.UIService
 {
     public interface IColorService
     {
-        Color New(string name);
+        Color New(string name, string hexcode);
 
         Color Create(Color color);
 

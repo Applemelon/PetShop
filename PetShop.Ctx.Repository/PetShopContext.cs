@@ -24,6 +24,10 @@ namespace PetShop.Ctx.Repository
             modelBuilder.Entity<Owner>().HasMany(o => o.pets).WithOne(p => p.owner).OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<PetColorLine>().HasKey(pc => new { pc.colorId, pc.petId });
+
+            modelBuilder.Entity<PetColorLine>().HasOne(pc => pc.pet).WithMany(p => p.colors).HasForeignKey(pc => pc.petId).OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<PetColorLine>().HasOne(pc => pc.color).WithMany(c => c.pets).HasForeignKey(pc => pc.colorId).OnDelete(DeleteBehavior.SetNull);
+
         }
     }
 }

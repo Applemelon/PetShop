@@ -52,7 +52,6 @@ namespace PetShop.Repository
                 pet.type = petUpdate.type;
                 pet.birthday = petUpdate.birthday;
                 pet.solddate = petUpdate.solddate;
-                pet.color = petUpdate.color;
                 pet.price = petUpdate.price;
                 return pet;
             }

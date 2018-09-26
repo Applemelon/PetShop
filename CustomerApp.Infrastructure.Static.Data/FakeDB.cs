@@ -34,7 +34,6 @@ namespace PetShop.Repository
                 type = PetType.BIRD,
                 birthday = DateTime.Now,
                 solddate = DateTime.Now,
-                color = "Rød, Grøn",
                 price = 59.99
             };
 
@@ -46,7 +45,6 @@ namespace PetShop.Repository
                 type = PetType.HAMSTER,
                 birthday = DateTime.Now,
                 solddate = DateTime.Now,
-                color = "Hvid",
                 price = 500
             };
 
@@ -58,7 +56,6 @@ namespace PetShop.Repository
                 type = PetType.BIRD,
                 birthday = DateTime.Now,
                 solddate = DateTime.Now,
-                color = "Hvid",
                 price = 800000
             };
 

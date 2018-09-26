@@ -26,6 +26,14 @@ namespace PetShop.Ctx.Repository.Repositories
             {
                 pet.owner = _ctx.Owners.FirstOrDefault(o => o.id == pet.owner.id);
             }
+            /*if (pet.colors != null)
+            {
+                for (int i = 0; i < pet.colors.Count; i++)
+                {
+                     = _ctx.Colors.FirstOrDefault(c => c.id == );
+                }
+                
+            }*/
             var addedPet =_ctx.Add(pet).Entity;
             _ctx.SaveChanges();
             return pet;
