@@ -103,7 +103,7 @@ namespace PetShopApp
             PL("Enter the price of the Pet");
             double price = ParseToDouble("Your entered value is not a number. Please enter the price of the Pet");
 
-            Pet pet = petService.New(name, type, birthday, color, previousowner, price);
+            //Pet pet = petService.New(name, type, birthday, color, previousowner, price);
 
             PL("");
             PL("You have created the following pet:");
@@ -123,7 +123,7 @@ namespace PetShopApp
             switch (WhileParseInt(choice, "Please input a number between 1 and 2.", 2, 1))
             {
                 case 1:
-                    petService.Create(pet);
+                    //petService.Create(pet);
                     PL("The Pet has been added to the repository.");
                     break;
                 case 2:
@@ -534,7 +534,7 @@ namespace PetShopApp
                         break;
                     case 6:
                         PL("Enter the new previous owner");
-                        pet.previousowner = R();
+                        //pet.previousowner = R();
                         break;
                     case 7:
                         PL("Enter the new price");

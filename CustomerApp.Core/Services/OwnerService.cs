@@ -7,9 +7,8 @@ using System.Linq;
 
 namespace PetShop.Core.UIService
 {
-    class OwnerService : IOwnerService
+    public class OwnerService : IOwnerService
     {
-
         readonly IOwnerRepository ownerRepo;
 
         public OwnerService(IOwnerRepository ownerRepository)

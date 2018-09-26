@@ -6,7 +6,7 @@ namespace PetShop.Core.RepositoryService
 {
     public interface IPetRepository
     {
-        Pet Create(Pet customer);
+        Pet Create(Pet pet);
 
         Pet ReadById(int id);
 

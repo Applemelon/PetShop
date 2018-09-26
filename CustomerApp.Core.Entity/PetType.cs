@@ -8,6 +8,4 @@ namespace PetShop.Core.Entity
     {
         NONE, DOG, CAT, BIRD, HAMSTER
     }
-
-
 }

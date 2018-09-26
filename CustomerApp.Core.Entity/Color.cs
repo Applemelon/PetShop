@@ -4,12 +4,10 @@ using System.Text;
 
 namespace PetShop.Core.Entity
 {
-    public class Owner
+    public class Color
     {
         public int id { get; set; }
-
         public string name { get; set; }
-
-        public List<Pet> pets { get; set; }
+        public List<PetColorLine> pets { get; set; }
     }
 }

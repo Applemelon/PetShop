@@ -18,9 +18,11 @@ namespace PetShop.Core.Entity
 
         public string color { get; set; }
 
-        public string previousowner { get; set; }
-
         public double price { get; set; }
+        
+        public Owner owner { get; set; }
+
+        public List<PetColorLine> colors { get; set; }
 
         override
         public string ToString()
@@ -29,7 +31,7 @@ namespace PetShop.Core.Entity
             string birthString = birthday.ToString("MM/dd/yyyy HH:mm:ss.fff");
             string soldString = solddate.ToString("MM/dd/yyyy HH:mm:ss.fff");
 
-            return ("Id: " + id + ", Name: " + name + ", Type: " + typeString + ", Birth Date: " + birthString + ", Sold Date: " + soldString + ", Color: " + color + ", Previous Owner: " + previousowner + ", Price: " + price);
+            return ("Id: " + id + ", Name: " + name + ", Type: " + typeString + ", Birth Date: " + birthString + ", Sold Date: " + soldString + ", Color: " + color + ", Price: " + price);
         }
     }
 }

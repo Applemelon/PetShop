@@ -1,34 +1,27 @@
 ﻿using PetShop.Core.Entity;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace PetShop.Repository
+namespace PetShop.Ctx.Repository
 {
-    public class FakeDB
+    public class DBInit
     {
-        public static readonly List<Pet> petList = new List<Pet>();
-        public static int petId = 1;
 
-        public static readonly List<Owner> ownerList = new List<Owner>();
-        public static int ownerId = 1;
-
-        public static void StartUp()
+        public static void StartUp(PetShopContext ctx)
         {
             Owner per = new Owner
             {
-                id = 0,
                 name = "Per Tygesen",
             };
 
             Owner frederik = new Owner
             {
-                id = 0,
                 name = "Frederik Hansen"
             };
 
             Pet hans = new Pet
             {
-                id = 0,
                 owner = per,
                 name = "Hans",
                 type = PetType.BIRD,
@@ -40,7 +33,6 @@ namespace PetShop.Repository
 
             Pet gogge = new Pet
             {
-                id = 0,
                 owner = frederik,
                 name = "Gogge",
                 type = PetType.HAMSTER,
@@ -52,7 +44,6 @@ namespace PetShop.Repository
 
             Pet viggo = new Pet
             {
-                id = 0,
                 owner = per,
                 name = "Viggo",
                 type = PetType.BIRD,
@@ -62,20 +53,14 @@ namespace PetShop.Repository
                 price = 800000
             };
 
-            hans.id = petId++;
-            petList.Add(hans);
+            ctx.Add(hans);
+            ctx.Add(gogge);
+            ctx.Add(viggo);
+            ctx.Add(per);
+            ctx.Add(frederik);
 
-            gogge.id = petId++;
-            petList.Add(gogge);
+            ctx.SaveChanges();
 
-            viggo.id = petId++;
-            petList.Add(viggo);
-
-            per.id = ownerId++;
-            ownerList.Add(per);
-
-            frederik.id = ownerId++;
-            ownerList.Add(frederik);
         }
     }
 }

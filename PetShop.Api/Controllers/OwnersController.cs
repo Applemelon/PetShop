@@ -38,7 +38,7 @@ namespace PetShop.Api.Controllers
         [HttpPost]
         public ActionResult<Owner> Post([FromBody] Owner value)
         {
-            Owner owner = new Owner();
+            Owner owner = value;
             if (string.IsNullOrEmpty(owner.name))
             {
                 return BadRequest("Name is required for creating Owner");

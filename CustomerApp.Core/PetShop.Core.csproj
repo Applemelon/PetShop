@@ -4,8 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="UIService\Dm,urki.cs" />
-    <Compile Remove="UIService\Implementation\CustomerService.cs" />
+    <Compile Remove="IService\Dm,urki.cs" />
+    <Compile Remove="IService\Implementation\CustomerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomerApp.Core.Entity\PetShop.Core.Entity.csproj" />

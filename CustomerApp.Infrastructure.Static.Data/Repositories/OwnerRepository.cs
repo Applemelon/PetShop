@@ -6,7 +6,7 @@ using PetShop.Core.RepositoryService;
 
 namespace PetShop.Repository.Repositories
 {
-    class OwnerRepository : IOwnerRepository
+    public class OwnerRepository : IOwnerRepository
     {
         public Owner Create(Owner owner)
         {

@@ -1,5 +1,6 @@
 ﻿using PetShop.Core.Entity;
 using PetShop.Core.RepositoryService;
+using PetShop.Core.UIService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace PetShop.Repository
 {
     public class PetRepository: IPetRepository
     {
+        private IOwnerService _ownerService;
+
+        public PetRepository(IOwnerService ownerService)
+        {
+            _ownerService = ownerService;
+        }
+
         public Pet Create(Pet pet)
         {
             pet.id = FakeDB.petId++;
@@ -45,7 +53,6 @@ namespace PetShop.Repository
                 pet.birthday = petUpdate.birthday;
                 pet.solddate = petUpdate.solddate;
                 pet.color = petUpdate.color;
-                pet.previousowner = petUpdate.previousowner;
                 pet.price = petUpdate.price;
                 return pet;
             }

@@ -15,7 +15,7 @@ namespace PetShop.Core.UIService
             petRepo = petRepository;
         }
 
-        public Pet New(string name, PetType type, DateTime birthday, string color, string previousowner, double price)
+        public Pet New(string name, PetType type, DateTime birthday, string color, double price)
         {
             var pet = new Pet()
             {
@@ -25,7 +25,6 @@ namespace PetShop.Core.UIService
                 birthday = birthday,
                 solddate = (DateTime.Parse(DateTime.Now.ToString("h:mm:ss tt"))),
                 color = color,
-                previousowner = previousowner,
                 price = price,
             };
 
