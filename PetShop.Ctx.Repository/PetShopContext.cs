@@ -18,6 +18,8 @@ namespace PetShop.Ctx.Repository
 
         public DbSet<PetColorLine> PCLine { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pet>().HasOne(p => p.owner).WithMany(o => o.pets).OnDelete(DeleteBehavior.SetNull);

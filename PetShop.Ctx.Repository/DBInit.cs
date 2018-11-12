@@ -77,8 +77,41 @@ namespace PetShop.Ctx.Repository
             ctx.Add(brown);
             ctx.Add(black);
 
+            string password = "1234";
+            byte[] passwordHashJoe, passwordSaltJoe, passwordHashAnn, passwordSaltAnn;
+            CreatePasswordHash(password, out passwordHashJoe, out passwordSaltJoe);
+            CreatePasswordHash(password, out passwordHashAnn, out passwordSaltAnn);
+
+            User user = new User
+            {
+                Username = "User",
+                PasswordHash = passwordHashJoe,
+                PasswordSalt = passwordSaltJoe,
+                IsAdmin = false
+            };
+
+            User admin = new User
+            {
+                Username = "Admin",
+                PasswordHash = passwordHashJoe,
+                PasswordSalt = passwordSaltJoe,
+                IsAdmin = true
+            };
+
+            ctx.Add(user);
+            ctx.Add(admin);
+
             ctx.SaveChanges();
 
+        }
+
+        private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            {
+                passwordSalt = hmac.Key;
+                passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            }
         }
     }
 }

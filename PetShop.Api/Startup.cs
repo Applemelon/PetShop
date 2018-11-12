@@ -8,6 +8,12 @@ using PetShop.Core.RepositoryService;
 using Microsoft.EntityFrameworkCore;
 using PetShop.Ctx.Repository.Repositories;
 using PetShop.Ctx.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using PetShop.Core.Entity;
+using PetShop.Core.IService;
+using PetShop.Core.Services;
 
 namespace PetShop.Api
 {
@@ -31,13 +37,27 @@ namespace PetShop.Api
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             _conf = builder.Build();
+            JwtSecurityKey.SetSecret("Sixteen characters");
         }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<PetShopContext>(opt => opt.UseInMemoryDatabase("Fisk"));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = JwtSecurityKey.Key,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(5)
+                };
+            });
+
+            services.AddCors();
 
             if (_env.IsDevelopment())
             {
@@ -48,7 +68,7 @@ namespace PetShop.Api
             {
                 services.AddDbContext<PetShopContext>(
                     opt => opt
-                        .UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
+                        .UseSqlServer(_conf.GetConnectionString("defaultConnection")));
             }
 
             services.AddScoped<IPetService, PetService>();
@@ -59,6 +79,9 @@ namespace PetShop.Api
 
             services.AddScoped<IColorService, ColorService>();
             services.AddScoped<IColorRepository, ColorRepository>();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository<User>, UserRepository>();
 
             services.AddMvc().AddJsonOptions(options =>
             {
@@ -85,6 +108,7 @@ namespace PetShop.Api
             }
             else
             {
+                app.UseDeveloperExceptionPage();
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var ctx = scope.ServiceProvider.GetService<PetShopContext>();
@@ -93,6 +117,9 @@ namespace PetShop.Api
                 app.UseHsts();
             }
 
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

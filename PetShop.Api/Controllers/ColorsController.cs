@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PetShop.Core.Entity;
 using PetShop.Core.UIService;
 
 namespace PetShop.Api.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ColorsController : ControllerBase
@@ -22,6 +20,7 @@ namespace PetShop.Api.Controllers
         }
 
         // GET: api/Colors
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<Color>> Get()
         {
@@ -29,6 +28,7 @@ namespace PetShop.Api.Controllers
         }
 
         // GET: api/Colors/5
+        [Authorize(Roles = "Administrator")]
         [HttpGet("{id}")]
         public ActionResult<Color> Get(int id)
         {
@@ -36,6 +36,7 @@ namespace PetShop.Api.Controllers
         }
 
         // POST: api/Colors
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult<Color> Post([FromBody] Color value)
         {
@@ -52,6 +53,7 @@ namespace PetShop.Api.Controllers
         }
 
         // PUT: api/Colors/5
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public ActionResult<string> Put(int id, [FromBody] string value)
         {
@@ -59,6 +61,7 @@ namespace PetShop.Api.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(int id)
         {

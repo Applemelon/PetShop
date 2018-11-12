@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using PetShop.Core.Entity;
 using PetShop.Core.UIService;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PetShop.Api.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class PetsController : ControllerBase
@@ -21,6 +19,7 @@ namespace PetShop.Api.Controllers
         }
 
         // GET api/values
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<Pet>> Get()
         {
@@ -28,6 +27,7 @@ namespace PetShop.Api.Controllers
         }
 
         // GET api/values/5
+        [Authorize(Roles = "Administrator")]
         [HttpGet("{id}")]
         public ActionResult<Pet> Get(int id)
         {
@@ -35,6 +35,7 @@ namespace PetShop.Api.Controllers
         }
 
         // POST api/values
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public ActionResult<Pet> Post([FromBody] Pet value)
         {
@@ -52,6 +53,7 @@ namespace PetShop.Api.Controllers
         }
 
         // PUT api/values/5
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public ActionResult<Pet> Put(int id, [FromBody] Pet pet)
         {
@@ -63,6 +65,7 @@ namespace PetShop.Api.Controllers
         }
 
         // DELETE api/values/5
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public ActionResult<Pet> Delete(int id)
         {
